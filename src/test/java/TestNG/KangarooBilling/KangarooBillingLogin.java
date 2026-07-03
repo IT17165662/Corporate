@@ -48,7 +48,7 @@ public class KangarooBillingLogin {
         WebElement Login_btn = driver.findElement(By.xpath("/html/body/app-root/app-login1/div[1]/div/div/div/div/div/form/div[6]/div[2]/input"));
 
 
-        //Input the values in each and every input fields
+        //Inputs the values in each and every input fields
         UserName_txt.sendKeys("kangaroobilling");
         Password_txt.sendKeys("kangaroo");
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
