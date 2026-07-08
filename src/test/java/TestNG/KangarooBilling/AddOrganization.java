@@ -4,6 +4,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.BeforeTest;
@@ -78,13 +79,11 @@ public class AddOrganization {
     @Test(priority = 2)
     public void ClickAddOrganization(){
 
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-
         //Identify the element by id/xpath/class / any locator in corporate Page
-        WebElement AddOrgbtn = driver.findElement(By.xpath("//*[@id=\"cont\"]/form/div/div[5]/button"));
 
-        //Inputs the values in each and every input fields
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+
+        WebElement AddOrgbtn =wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"cont\"]/form/div/div[5]/button")));
         AddOrgbtn.click();
 
     }
@@ -286,64 +285,8 @@ public class AddOrganization {
 
     }
 
-    //Test case 17 :- Verify user able to select Approved Categories
-    @Test(priority = 17,enabled = true)
-    public void ApprovedCat() throws InterruptedException {
-
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-
-        WebElement ApprovedCategries = driver.findElement(By.xpath("/html/body/app-root/app-menu/mat-drawer-container/mat-drawer-content/app-customer-reg/div/div/div/form/div[7]/label[1]"));
-
-        //Scroll until the options is visible
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);",ApprovedCategries);
-
-
-        //Identify the element by id/xpath/class / any locator in corporate Page
-        //WebElement Expo = driver.findElement(By.xpath("/html/body/app-root/app-menu/mat-drawer-container/mat-drawer-content/app-customer-reg/div/div/div/form/div[7]/div[1]/div/div[2]"));
-        WebElement Budget = driver.findElement(By.xpath("/html/body/app-root/app-menu/mat-drawer-container/mat-drawer-content/app-customer-reg/div/div/div/form/div[7]/div[1]/div/div[3]"));
-        //WebElement City = driver.findElement(By.xpath("/html/body/app-root/app-menu/mat-drawer-container/mat-drawer-content/app-customer-reg/div/div/div/form/div[7]/div[1]/div/div[4]"));
-        WebElement Car = driver.findElement(By.xpath("/html/body/app-root/app-menu/mat-drawer-container/mat-drawer-content/app-customer-reg/div/div/div/form/div[7]/div[1]/div/div[5]"));
-        //WebElement Semi = driver.findElement(By.xpath("/html/body/app-root/app-menu/mat-drawer-container/mat-drawer-content/app-customer-reg/div/div/div/form/div[7]/div[1]/div/div[6]"));
-        //WebElement Minivan = driver.findElement(By.xpath("/html/body/app-root/app-menu/mat-drawer-container/mat-drawer-content/app-customer-reg/div/div/div/form/div[7]/div[1]/div/div[7]"));
-        WebElement Van = driver.findElement(By.xpath("/html/body/app-root/app-menu/mat-drawer-container/mat-drawer-content/app-customer-reg/div/div/div/form/div[7]/div[1]/div/div[8]"));
-        //WebElement BuddyVan = driver.findElement(By.xpath("/html/body/app-root/app-menu/mat-drawer-container/mat-drawer-content/app-customer-reg/div/div/div/form/div[7]/div[1]/div/div[9]"));
-
-        //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        Budget.click();
-        Car.click();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        Van.click();
-
-
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     //Test case 15 :- Verify when user select Corporate as Org type, User able to On/Off Voucher
-    @Test(priority =15 ,enabled = true)
+    @Test(priority =15 ,enabled = false)
     public void OnOffVoucherAllowBookingsSwitch(){
 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
@@ -377,4 +320,75 @@ public class AddOrganization {
 
     }
 
+    //Test case 17 :- Verify user able to select Approved Categories
+    @Test(priority = 17,enabled = true)
+    public void ApprovedCat() throws InterruptedException {
+
+        //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+
+        WebElement ApprovedCategries = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/app-root/app-menu/mat-drawer-container/mat-drawer-content/app-customer-reg/div/div/div/form/div[7]/label[1]")));
+
+        //WebElement AggreeCategries = driver.findElement(By.xpath("/html/body/app-root/app-menu/mat-drawer-container/mat-drawer-content/app-customer-reg/div/div/div/form/div[7]/label[2]"));
+        //Scroll until the options is visible
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);",ApprovedCategries);
+
+
+        //Identify the element by id/xpath/class / any locator in corporate Page
+        
+        //WebElement Expo = driver.findElement(By.xpath("/html/body/app-root/app-menu/mat-drawer-container/mat-drawer-content/app-customer-reg/div/div/div/form/div[7]/div[1]/div/div[2]"));
+        WebElement Budget =wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/app-root/app-menu/mat-drawer-container/mat-drawer-content/app-customer-reg/div/div/div/form/div[7]/div[1]/div/div[3]")));
+        //WebElement City = driver.findElement(By.xpath("/html/body/app-root/app-menu/mat-drawer-container/mat-drawer-content/app-customer-reg/div/div/div/form/div[7]/div[1]/div/div[4]"));
+        WebElement Car =wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/app-root/app-menu/mat-drawer-container/mat-drawer-content/app-customer-reg/div/div/div/form/div[7]/div[1]/div/div[5]")));
+        //WebElement Semi = driver.findElement(By.xpath("/html/body/app-root/app-menu/mat-drawer-container/mat-drawer-content/app-customer-reg/div/div/div/form/div[7]/div[1]/div/div[6]"));
+        //WebElement Minivan = driver.findElement(By.xpath("/html/body/app-root/app-menu/mat-drawer-container/mat-drawer-content/app-customer-reg/div/div/div/form/div[7]/div[1]/div/div[7]"));
+        WebElement Van =wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/app-root/app-menu/mat-drawer-container/mat-drawer-content/app-customer-reg/div/div/div/form/div[7]/div[1]/div/div[8]")));
+        //WebElement BuddyVan = driver.findElement(By.xpath("/html/body/app-root/app-menu/mat-drawer-container/mat-drawer-content/app-customer-reg/div/div/div/form/div[7]/div[1]/div/div[9]"));
+
+        Budget.click();
+        Car.click();
+        Van.click();
+
+    }
+
+    //Test case 18 :- Verify user able to add special rates/discount
+    @Test(priority = 18,enabled = false)
+    public void DiscountSpecialRates(){
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+
+        //Budget
+        WebElement Discount =wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/app-root/app-menu/mat-drawer-container/mat-drawer-content/app-customer-reg/div/div/div/form/div[7]/div[1]/div/div[3]/div/div/div/div[1]/input")));
+       // WebElement SpecialDis =wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/app-root/app-menu/mat-drawer-container/mat-drawer-content/app-customer-reg/div/div/div/form/div[7]/div[1]/div/div[3]/div/div/div/div[2]/input")));
+
+       // WebElement Callup =wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/app-root/app-menu/mat-drawer-container/mat-drawer-content/app-customer-reg/div/div/div/form/div[7]/div[1]/div/div[3]/div/div/div/div[3]/input")));
+        WebElement Mincharges =wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/app-root/app-menu/mat-drawer-container/mat-drawer-content/app-customer-reg/div/div/div/form/div[7]/div[1]/div/div[3]/div/div/div/div[4]/input")));
+        WebElement MinimumKm =wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/app-root/app-menu/mat-drawer-container/mat-drawer-content/app-customer-reg/div/div/div/form/div[7]/div[1]/div/div[3]/div/div/div/div[5]/input")));
+        WebElement RatePerKM =wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/app-root/app-menu/mat-drawer-container/mat-drawer-content/app-customer-reg/div/div/div/form/div[7]/div[1]/div/div[3]/div/div/div/div[6]/input")));
+        WebElement WaitingRate =wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/app-root/app-menu/mat-drawer-container/mat-drawer-content/app-customer-reg/div/div/div/form/div[7]/div[1]/div/div[3]/div/div/div/div[7]/input")));
+
+        Discount.clear();
+        Discount.sendKeys("10");
+
+        Mincharges.clear();
+        Mincharges.sendKeys("450");
+
+        MinimumKm.clear();
+        MinimumKm.sendKeys("3");
+
+        RatePerKM.clear();
+        RatePerKM.sendKeys("45");
+
+        WaitingRate.clear();
+        WaitingRate.sendKeys("60");
+
+
+
+
+
+
+
+
+
+    }
 }
