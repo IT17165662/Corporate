@@ -7,10 +7,13 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
 
+//Attach the listener here
+//@Listeners(CsvListener.class)
 public class AddOrganization {
 
     //Global Variable Section
@@ -18,6 +21,8 @@ public class AddOrganization {
     String BaseURL ="http://192.168.1.50:85/Admin";
     public ChromeDriver driver;
 
+    String expectedResult;
+    String actualResult;
 
 
     //in particular class before execute atleast one testcase,if we need to do something,if we need to do any preparation,we need to put that inside the
@@ -34,13 +39,14 @@ public class AddOrganization {
         js.executeScript("window.sessionStorage.clear(); window.localStorage.clear();");
 
     }
+
     //Test case 1:- Verify user able to login to the system
     @Test(priority = 1)
-    public void KangarooBillingLogin(){
+    public void KangarooBillingLogin() {
 
         //Identify the element by id/xpath/class / any locator in corporate Page
         WebElement UserName_txt = driver.findElement(By.xpath("//*[@id=\"username\"]"));
-        WebElement Password_txt=driver.findElement(By.xpath("//*[@id=\"password\"]"));
+        WebElement Password_txt = driver.findElement(By.xpath("//*[@id=\"password\"]"));
         WebElement Login_btn = driver.findElement(By.xpath("/html/body/app-root/app-login1/div[1]/div/div/div/div/div/form/div[6]/div[2]/input"));
 
         //Inputs the values in each and every input fields
@@ -48,6 +54,22 @@ public class AddOrganization {
         Password_txt.sendKeys("kangaroo");
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         Login_btn.click();
+
+        expectedResult = "Success\n" + "Logged In";
+        actualResult = driver.findElement(By.xpath("//*[@id=\"toast-container\"]")).getText();
+        System.out.println("Test:-" + actualResult);
+
+        if (actualResult.equals(expectedResult)) {
+            String message = "TC001:Pass:-Verify when user login to the system, User navigate to Home Page";
+            System.out.println(message);
+            CsvUtil.writeResult("LoginTest:-", message);
+
+        } else {
+            String message = "TC001:Fail";
+            System.out.println(message);
+            CsvUtil.writeResult("LoginTest:-", message);
+
+        }
 
     }
 
