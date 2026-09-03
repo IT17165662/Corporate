@@ -1,4 +1,3 @@
-
 LoginTest:-,TC001:Pass:-Verify when user login to the system, User navigate to Home Page
 LoginTest:-,TC001:Pass:-Verify when user login to the system, User navigate to Home Page
 LoginTest:-,TC001:Pass:-Verify when user login to the system, User navigate to Home Page
@@ -10,15 +9,4 @@ LoginTest:-,TC001:Pass:-Verify when user login to the system, User navigate to H
 LoginTest:-,TC001:Pass:-Verify when user login to the system, User navigate to Home Page
 LoginTest:-,TC001:Pass:-Verify when user login to the system, User navigate to Home Page
 LoginTest:-,TC001:Pass:-Verify when user login to the system, User navigate to Home Page
-LoginTest:-,TC001:Pass:-Verify when user login to the system, User navigate to Home Page
-LoginTest:-,TC001:Pass:-Verify when user login to the system, User navigate to Home Page
-LoginTest:-,TC001:Pass:-Verify when user login to the system, User navigate to Home Page
-LoginTest:-,TC001:Pass:-Verify when user login to the system, User navigate to Home Page
-LoginTest:-,TC001:Pass:-Verify when user login to the system, User navigate to Home Page
-LoginTest:-,TC001:Pass:-Verify when user login to the system, User navigate to Home Page
-LoginTest:-,TC001:Pass:-Verify when user login to the system, User navigate to Home Page
-LoginTest:-,TC001:Pass:-Verify when user login to the system, User navigate to Home Page
-LoginTest:-,TC001:Pass:-Verify when user login to the system, User navigate to Home Page
-LoginTest:-,TC001:Pass:-Verify when user login to the system, User navigate to Home Page
-LoginTest:-,TC001:Pass:-Verify when user login to the system, User navigate to Home Page
-LoginTest:-,TC001:Pass:-Verify when user login to the system, User navigate to Home Page
+LoginTest:-,TC001:Fail

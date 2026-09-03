@@ -11,6 +11,8 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.time.Duration;
 
 //Attach the listener here
@@ -33,6 +35,7 @@ public class AddOrganization {
 
         driver = new ChromeDriver();
         driver.manage().window().maximize();
+
         driver.get(BaseURL);
         driver.navigate().refresh();
         driver.manage().deleteAllCookies();
@@ -43,7 +46,7 @@ public class AddOrganization {
 
     //Test case 1:- Verify user able to login to the system
     @Test(priority = 1)
-    public void KangarooBillingLogin() {
+    public void KangarooBillingLogin()  {
 
         //Identify the element by id/xpath/class / any locator in corporate Page
         WebElement UserName_txt = driver.findElement(By.xpath("//*[@id=\"username\"]"));
@@ -72,12 +75,17 @@ public class AddOrganization {
 
         }
 
+
     }
 
 
     //Test case 2 :- Verify when user click 'ADD ORGANIZATION' , User naviage to add orgaization Page
     @Test(priority = 2)
     public void ClickAddOrganization(){
+
+        // Switch to active element and press Enter
+        Actions actions = new Actions(driver);
+        actions.sendKeys(Keys.ENTER).perform();
 
         //Identify the element by id/xpath/class / any locator in corporate Page
 
@@ -87,6 +95,7 @@ public class AddOrganization {
         AddOrgbtn.click();
 
     }
+    
 
 
 
@@ -346,16 +355,16 @@ public class AddOrganization {
         //WebElement BuddyVan = driver.findElement(By.xpath("/html/body/app-root/app-menu/mat-drawer-container/mat-drawer-content/app-customer-reg/div/div/div/form/div[7]/div[1]/div/div[9]"));
 
         Budget.click();
-        Car.click();
-        Van.click();
+        //Car.click();
+        //Van.click();
 
     }
 
     //Test case 18 :- Verify user able to add special rates/discount
-    @Test(priority = 18,enabled = false)
+    @Test(priority = 18,enabled = true)
     public void DiscountSpecialRates(){
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
         //Budget
         WebElement Discount =wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/app-root/app-menu/mat-drawer-container/mat-drawer-content/app-customer-reg/div/div/div/form/div[7]/div[1]/div/div[3]/div/div/div/div[1]/input")));
